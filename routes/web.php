@@ -1,5 +1,6 @@
 <?php
 
+use App\Livewire\ComponentName;
 use Illuminate\Support\Facades\Route;
 
 Route::view('/', 'welcome');
@@ -12,4 +13,7 @@ Route::view('profile', 'profile')
     ->middleware(['auth'])
     ->name('profile');
 
-require __DIR__.'/auth.php';
+
+// livewire routes
+Route::get('/sample', ComponentName::class);
+require __DIR__ . '/auth.php';
