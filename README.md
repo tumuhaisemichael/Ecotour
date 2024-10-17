@@ -37,12 +37,12 @@ To install and set up this project locally:
 
 1. Clone the repository:
     ```bash
-    git clone https://github.com/yourusername/ecotour-uganda.git
+    git clone https://github.com/tumuhaisemichael/Ecotour
     ```
 
 2. Navigate into the project directory:
     ```bash
-    cd ecotour-uganda
+    cd Ecotour
     ```
 
 3. Install dependencies using Composer:
@@ -75,7 +75,7 @@ To install and set up this project locally:
     php artisan serve
     ```
 
-## Project Routes
+## Route Setup
 
 Sample setup of the routes after creating a livewire component
 
