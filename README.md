@@ -96,6 +96,7 @@ Route::view('profile', 'profile')
 // Livewire route
 Route::get('/sample', ComponentName::class);
 
+```
 
 ## Contribution Guidelines
 
