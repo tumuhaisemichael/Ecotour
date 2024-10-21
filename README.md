@@ -67,7 +67,9 @@ To install and set up this project locally:
 
 7. Install frontend dependencies using npm (optional for CSS/JS):
     ```bash
-    npm install && npm run dev
+    npm run build
+    npm install 
+    npm run dev
     ```
 
 8. Start the development server:
