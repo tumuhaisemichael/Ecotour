@@ -45,11 +45,11 @@ return [
         'mysql' => [
             'driver' => 'mysql',
             'url' => env('DB_URL'),
-            'host' => env('DB_HOST', 'sql5.freesqldatabase.com'),
+            'host' => env('DB_HOST', 'srv1179.hstgr.io'),
             'port' => env('DB_PORT', '3306'),
-            'database' => env('DB_DATABASE', 'sql5738550'),
-            'username' => env('DB_USERNAME', 'sql5738550'),
-            'password' => env('DB_PASSWORD', 'avaczLpRhH'),
+            'database' => env('DB_DATABASE', 'u864532666_ecotour'),
+            'username' => env('DB_USERNAME', 'u864532666_ecotour'),
+            'password' => env('DB_PASSWORD', '^3yqbBOo'),
             'unix_socket' => env('DB_SOCKET', ''),
             'charset' => env('DB_CHARSET', 'utf8mb4'),
             'collation' => env('DB_COLLATION', 'utf8mb4_unicode_ci'),
@@ -147,7 +147,7 @@ return [
 
         'options' => [
             'cluster' => env('REDIS_CLUSTER', 'redis'),
-            'prefix' => env('REDIS_PREFIX', Str::slug(env('APP_NAME', 'laravel'), '_').'_database_'),
+            'prefix' => env('REDIS_PREFIX', Str::slug(env('APP_NAME', 'laravel'), '_') . '_database_'),
         ],
 
         'default' => [
