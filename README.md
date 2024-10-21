@@ -67,7 +67,9 @@ To install and set up this project locally:
 
 7. Install frontend dependencies using npm (optional for CSS/JS):
     ```bash
-    npm install && npm run dev
+    npm run build
+    npm install 
+    npm run dev
     ```
 
 8. Start the development server:
@@ -104,4 +106,4 @@ This project is licensed under the MIT License.
 
 ## Contact
 
-For any inquiries or support, please reach out to the project maintainers at your-email@example.com.
+For any inquiries or support, please reach out to the project maintainers at michaelberry047@gmail.com.
