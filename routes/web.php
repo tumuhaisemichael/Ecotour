@@ -18,6 +18,11 @@ use App\Livewire\Host\Bookings as HostBookings;
 use App\Livewire\Host\Availability;
 use App\Livewire\Host\Earnings;
 use App\Livewire\Host\Reviews as HostReviews;
+use App\Livewire\Tourist\Dashboard as TouristDashboard;
+use App\Livewire\Tourist\BrowseExperiences;
+use App\Livewire\Tourist\Bookings as TouristBookings;
+use App\Livewire\Tourist\BookingDetails;
+use App\Livewire\Tourist\WriteReview;
 
 Route::view('/', 'welcome');
 
@@ -52,6 +57,17 @@ Route::middleware([])->prefix('host')->group(function () {
     Route::get('/availability', Availability::class)->name('host.availability');
     Route::get('/earnings', Earnings::class)->name('host.earnings');
     Route::get('/reviews', HostReviews::class)->name('host.reviews');
+});
+
+
+
+
+Route::middleware([])->prefix('tourist')->group(function () {
+    Route::get('/dashboard', TouristDashboard::class)->name('tourist.dashboard');
+    Route::get('/browse-experiences', BrowseExperiences::class)->name('tourist.browse-experiences');
+    Route::get('/bookings', TouristBookings::class)->name('tourist.bookings');
+    Route::get('/booking-details/{id}', BookingDetails::class)->name('tourist.booking-details');
+    Route::get('/write-review/{id}', WriteReview::class)->name('tourist.write-review');
 });
 
 
