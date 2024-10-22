@@ -11,31 +11,32 @@
     <title>EcoTour</title>
 
     <!-- Favicons-->
-    <link rel="shortcut icon" href="assets/tourist/img/favicon.ico" type="image/x-icon">
-    <link rel="apple-touch-icon" type="image/x-icon" href="assets/tourist/img/apple-touch-icon-57x57-precomposed.png">
+    <link rel="shortcut icon" href="{{ asset('assets/tourist/img/favicon.ico') }}" type="image/x-icon">
+    <link rel="apple-touch-icon" type="image/x-icon"
+        href="{{ asset('assets/tourist/img/apple-touch-icon-57x57-precomposed.png') }}">
     <link rel="apple-touch-icon" type="image/x-icon" sizes="72x72"
-        href="assets/tourist/img/apple-touch-icon-72x72-precomposed.png">
+        href="{{ asset('assets/tourist/img/apple-touch-icon-72x72-precomposed.png') }}">
     <link rel="apple-touch-icon" type="image/x-icon" sizes="114x114"
-        href="assets/tourist/img/apple-touch-icon-114x114-precomposed.png">
+        href="{{ asset('assets/tourist/img/apple-touch-icon-114x114-precomposed.png') }}">
     <link rel="apple-touch-icon" type="image/x-icon" sizes="144x144"
-        href="assets/tourist/img/apple-touch-icon-144x144-precomposed.png">
+        href="{{ asset('assets/tourist/img/apple-touch-icon-144x144-precomposed.png') }}">
 
     <!-- GOOGLE WEB FONT -->
     <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700|Satisfy" rel="stylesheet">
 
     <!-- BASE CSS -->
-    <link href="assets/tourist/css/animate.min.css" rel="stylesheet">
-    <link href="assets/tourist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="assets/tourist/css/style.css" rel="stylesheet">
-    <link href="assets/tourist/css/responsive.css" rel="stylesheet">
-    <link href="assets/tourist/css/menu.css" rel="stylesheet">
-    <link href="assets/tourist/css/icon_fonts/css/all_icons.min.css" rel="stylesheet">
+    <link href="{{ asset('assets/tourist/css/animate.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/tourist/css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/tourist/css/style.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/tourist/css/responsive.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/tourist/css/menu.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/tourist/css/icon_fonts/css/all_icons.min.css') }}" rel="stylesheet">
 
     <!-- YOUR CUSTOM CSS -->
-    <link href="assets/tourist/css/custom.css" rel="stylesheet">
+    <link href="{{ asset('assets/tourist/css/custom.css') }}" rel="stylesheet">
 
     <!-- Modernizr -->
-    <script src="assets/tourist/js/modernizr.js"></script>
+    <script src="{{ asset('assets/tourist/js/modernizr.js') }}"></script>
 
     <!--[if lt IE 9]>
       <script src="js/html5shiv.min.js"></script>
@@ -236,9 +237,10 @@
                 </p>
             </div>
         </div>
-        <img scr="assets/tourist/img/video_fix.png" alt="" class="header-video--media"
-            data-video-src="assets/tourist/video/intro" data-teaser-source="assets/tourist/video/intro" data-provider=""
-            data-video-width="1920" data-video-height="750">
+        <img scr="{{ asset('assets/tourist/img/video_fix.png') }}" alt="" class="header-video--media"
+            data-video-src="{{ asset('assets/tourist/video/intro') }}"
+            data-teaser-source="{{ asset('assets/tourist/video/intro') }}" data-provider="" data-video-width="1920"
+            data-video-height="750">
     </section>
     <!-- End Header video -->
     <!-- End SubHeader ============================================ -->
@@ -736,14 +738,14 @@
     <!-- End Search Menu -->
 
     <!-- COMMON SCRIPTS -->
-    <script src="assets/tourist/js/jquery-3.6.0.min.js"></script>
-    <script src="assets/tourist/js/common_scripts_min.js"></script>
-    <script src="assets/tourist/assets/validate.js"></script>
-    <script src="assets/tourist/js/jquery.tweet.min.js"></script>
-    <script src="assets/tourist/js/functions.js"></script>
+    <script src="{{ asset('assets/tourist/js/jquery-3.6.0.min.js') }}"></script>
+    <script src="{{ asset('assets/tourist/js/common_scripts_min.js') }}"></script>
+    <script src="{{ asset('assets/tourist/assets/validate.js') }}"></script>
+    <script src="{{ asset('assets/tourist/js/jquery.tweet.min.js') }}"></script>
+    <script src="{{ asset('assets/tourist/js/functions.js') }}"></script>
 
     <!-- SPECIFIC SCRIPTS -->
-    <script src="assets/tourist/js/video_header.js"></script>
+    <script src="{{ asset('assets/tourist/js/video_header.js') }}"></script>
     <script>
         'use strict';
         HeaderVideo.init({

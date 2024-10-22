@@ -24,17 +24,9 @@ use App\Livewire\Tourist\Bookings as TouristBookings;
 use App\Livewire\Tourist\BookingDetails;
 use App\Livewire\Tourist\WriteReview;
 
-Route::view('/', 'welcome');
+Route::get('/', BrowseExperiences::class)->name('tourist.browse-experiences');
 
-Route::view('dashboard', 'dashboard')
-    ->middleware(['auth', 'verified'])
-    ->name('dashboard');
-
-Route::view('profile', 'profile')
-    ->middleware(['auth'])
-    ->name('profile');
-
-Route::middleware([])->prefix('admin')->group(function () {
+Route::middleware(['auth', 'verified'])->prefix('admin')->group(function () {
     Route::get('/dashboard', Dashboard::class)->name('admin.dashboard');
     Route::get('/users', Users::class)->name('admin.users');
     Route::get('/experiences', Experiences::class)->name('admin.experiences');
@@ -48,7 +40,7 @@ Route::middleware([])->prefix('admin')->group(function () {
 });
 
 
-Route::middleware([])->prefix('host')->group(function () {
+Route::middleware(['auth', 'verified'])->prefix('host')->group(function () {
     Route::get('/dashboard', HostDashboard::class)->name('host.dashboard');
     Route::get('/experiences', HostExperiences::class)->name('host.experiences');
     Route::get('/add-experience', AddExperience::class)->name('host.add-experience');
@@ -59,13 +51,15 @@ Route::middleware([])->prefix('host')->group(function () {
 });
 
 
-Route::middleware([])->prefix('tourist')->group(function () {
+Route::middleware(['auth', 'verified'])->prefix('tourist')->group(function () {
     Route::get('/dashboard', TouristDashboard::class)->name('tourist.dashboard');
-    Route::get('/browse-experiences', BrowseExperiences::class)->name('tourist.browse-experiences');
     Route::get('/bookings', TouristBookings::class)->name('tourist.bookings');
     Route::get('/booking-details/{id}', BookingDetails::class)->name('tourist.booking-details');
     Route::get('/write-review/{id}', WriteReview::class)->name('tourist.write-review');
 });
 
+Route::view('profile', 'profile')
+    ->middleware(['auth'])
+    ->name('profile');
 
 require __DIR__ . '/auth.php';
