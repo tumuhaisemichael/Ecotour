@@ -48,7 +48,6 @@ Route::middleware([])->prefix('admin')->group(function () {
 });
 
 
-
 Route::middleware([])->prefix('host')->group(function () {
     Route::get('/dashboard', HostDashboard::class)->name('host.dashboard');
     Route::get('/experiences', HostExperiences::class)->name('host.experiences');
@@ -58,8 +57,6 @@ Route::middleware([])->prefix('host')->group(function () {
     Route::get('/earnings', Earnings::class)->name('host.earnings');
     Route::get('/reviews', HostReviews::class)->name('host.reviews');
 });
-
-
 
 
 Route::middleware([])->prefix('tourist')->group(function () {
