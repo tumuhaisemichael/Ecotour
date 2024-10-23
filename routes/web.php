@@ -23,8 +23,12 @@ use App\Livewire\Tourist\BrowseExperiences;
 use App\Livewire\Tourist\Bookings as TouristBookings;
 use App\Livewire\Tourist\BookingDetails;
 use App\Livewire\Tourist\WriteReview;
+use App\Livewire\Tourist\About;
 
 Route::get('/', BrowseExperiences::class)->name('tourist.browse-experiences');
+Route::get('/about', About::class)->name('tourist.about');
+Route::get('/faq', About::class)->name('tourist.faq');
+
 
 Route::middleware(['auth', 'verified'])->prefix('admin')->group(function () {
     Route::get('/dashboard', Dashboard::class)->name('admin.dashboard');
@@ -37,6 +41,8 @@ Route::middleware(['auth', 'verified'])->prefix('admin')->group(function () {
     Route::get('/settings', Settings::class)->name('admin.settings');
     Route::get('/reported-experiences', ReportedExperiences::class)->name('admin.reported-experiences');
     Route::get('/notifications', Notifications::class)->name('admin.notifications');
+    // Route::get('/about', About::class)->name('tourist.about');
+
 });
 
 
@@ -48,6 +54,8 @@ Route::middleware(['auth', 'verified'])->prefix('host')->group(function () {
     Route::get('/availability', Availability::class)->name('host.availability');
     Route::get('/earnings', Earnings::class)->name('host.earnings');
     Route::get('/reviews', HostReviews::class)->name('host.reviews');
+    // Route::get('/contact', Contact::class)->name('host.count');
+
 });
 
 

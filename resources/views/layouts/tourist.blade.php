@@ -53,10 +53,10 @@
 
     <div class="layer"></div>
     <!-- Mobile menu overlay mask -->
-
+<!-- 
     <div id="preloader">
         <div data-loader="circle-side"></div>
-    </div>
+    </div> -->
     <!-- End Preload -->
 
     <!-- Header================================================== -->
@@ -132,9 +132,9 @@
                                     </ul>
                                 </li>
                                 <li>
-                                    <a href="about.html">About us</a>
+                                    <a href="{{ route('tourist.about') }}">About us</a>
                                 </li>
-                                <li><a href="faq.html">Faq</a>
+                                <li><a href="{{ route('tourist.faq') }}">Faq</a>
                                 </li>
                                 <li class="submenu">
                                     <a href="javascript:void(0);" class="show-submenu">Other pages</a>
@@ -658,7 +658,7 @@
                         </li>
                         <li><a href="#">Login</a>
                         </li>
-                        <li><a href="#">Register</a>
+                        <li><a href="">Register</a>
                         </li>
                         <li><a href="#">Terms and condition</a>
                         </li>
