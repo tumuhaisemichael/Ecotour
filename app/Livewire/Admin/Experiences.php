@@ -11,60 +11,104 @@ use Illuminate\Support\Facades\Auth;
 class Experiences extends Component
 {
 
-    public $title;
-    public $description;
-    public $price;
-    public $category;
-    public $location;
-    public $available_dates;
-    public $status = 'active'; // Default value
-    public $experiences;
+    public $title, $description, $price, $category, $location, $available_dates, $experience_id;
+    public $modalMode = false; // to control the modal state
 
     // Validation rules
     protected $rules = [
         'title' => 'required|string|max:255',
         'description' => 'required|string',
-        'price' => 'required|numeric|min:0',
+        'price' => 'required|numeric',
         'category' => 'required|in:homestay,cultural_tour,workshop',
-        'location' => 'required|string|max:255',
+        'location' => 'required|string',
         'available_dates' => 'required|json',
     ];
 
-    public function mount()
+    // Reset form fields
+    private function resetInputFields()
     {
-        // Fetch all experiences for the authenticated host
-        $this->experiences = Experience::where('host_id', Auth::id())->get();
+        $this->title = '';
+        $this->description = '';
+        $this->price = '';
+        $this->category = '';
+        $this->location = '';
+        $this->available_dates = '';
+        $this->experience_id = '';
     }
 
-    public function submit()
+    // Open modal to create a new experience
+    public function create()
     {
-        // Validate the input data
+        $this->resetInputFields();
+        $this->modalMode = true;
+    }
+
+    // Store a new experience
+    public function store()
+    {
         $this->validate();
 
-        // Create a new experience and associate it with the authenticated host
         Experience::create([
             'title' => $this->title,
             'description' => $this->description,
             'price' => $this->price,
             'category' => $this->category,
             'location' => $this->location,
-            'host_id' => Auth::id(),
             'available_dates' => $this->available_dates,
-            'status' => $this->status,
+            'host_id' => Auth::id(),
         ]);
 
-        // Reset the form fields
-        $this->reset(['title', 'description', 'price', 'category', 'location', 'available_dates', 'status']);
-
-        // Refresh the experience list
-        $this->mount();
-
-        // Optional: Add a success message
         session()->flash('message', 'Experience created successfully.');
+        $this->resetInputFields();
+        $this->modalMode = false; // close the modal
     }
 
+    // Edit an experience
+    public function edit($id)
+    {
+        $experience = Experience::findOrFail($id);
+        $this->experience_id = $id;
+        $this->title = $experience->title;
+        $this->description = $experience->description;
+        $this->price = $experience->price;
+        $this->category = $experience->category;
+        $this->location = $experience->location;
+        $this->available_dates = $experience->available_dates;
+        $this->modalMode = true; // open the modal
+    }
+
+    // Update experience
+    public function update()
+    {
+        $this->validate();
+
+        $experience = Experience::find($this->experience_id);
+        $experience->update([
+            'title' => $this->title,
+            'description' => $this->description,
+            'price' => $this->price,
+            'category' => $this->category,
+            'location' => $this->location,
+            'available_dates' => $this->available_dates,
+        ]);
+
+        session()->flash('message', 'Experience updated successfully.');
+        $this->resetInputFields();
+        $this->modalMode = false; // close the modal
+    }
+
+    // Delete an experience
+    public function delete($id)
+    {
+        Experience::findOrFail($id)->delete();
+        session()->flash('message', 'Experience deleted successfully.');
+    }
+
+    // Fetch experiences and render them
     public function render()
     {
-        return view('livewire.admin.experiences');
+        $experiences = Experience::where('host_id', Auth::id())->get();
+
+        return view('livewire.admin.experiences', compact('experiences'));
     }
 }
