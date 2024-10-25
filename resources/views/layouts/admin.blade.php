@@ -18,6 +18,7 @@
         rel="stylesheet">
 
     <!-- Custom styles for this template-->
+    <link href="{{asset('assets/admin/css/admin.css')}}" rel="stylesheet">
     <link href="{{ asset('assets/admin/css/sb-admin-2.min.css')}}" rel="stylesheet">
     @livewireStyles
 </head>
@@ -133,6 +134,13 @@
                     <i class="fas fa-fw fa-table"></i>
                     <span>Tables</span></a>
             </li>
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('admin.users') }}">
+                    <i class="fas fa-fw fa-user"></i>
+                    <span>Users</span>
+                </a>
+            </li>
+
 
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
@@ -144,7 +152,7 @@
 
             <!-- Sidebar Message -->
             <div class="sidebar-card d-none d-lg-flex">
-                <img class="sidebar-card-illustration mb-2" src="assets/admin/img/undraw_logout.svg" alt="Logout Illustration">
+                <img class="sidebar-card-illustration mb-2" src="" alt="Logout Illustration">
                 <p class="text-center mb-2"><strong>Logout</strong> from your account safely.</p>
 
                 <!-- Logout Form -->
@@ -193,17 +201,17 @@
     <script src="{{ asset('assets/admin/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
 
     <!-- Core plugin JavaScript-->
-    <script src="{{ asset('assts/admin/vendor/jquery-easing/jquery.easing.min.js') }}"></script>
+{{--    <script src="{{ asset('assts/admin/vendor/jquery-easing/jquery.easing.min.js') }}"></script>--}}
 
     <!-- Custom scripts for all pages-->
     <script src="{{ asset('assets/admin/js/sb-admin-2.min.js') }}"></script>
 
     <!-- Page level plugins -->
-    <script src="{{ asset('assets/admin/vendor/chart.js/Chart.min.js') }}"></script>
+{{--    <script src="{{ asset('assets/admin/vendor/chart.js/Chart.min.js') }}"></script>--}}
 
     <!-- Page level custom scripts -->
-    <script src="{{ asset('assets/admin/js/demo/chart-area-demo.js') }}"></script>
-    <script src="{{ asset('assets/admin/js/demo/chart-pie-demo.js') }}"></script>
+{{--    <script src="{{ asset('assets/admin/js/demo/chart-area-demo.js') }}"></script>--}}
+{{--    <script src="{{ asset('assets/admin/js/demo/chart-pie-demo.js') }}"></script>--}}
     @livewireScripts
     @stack('scripts')
 
