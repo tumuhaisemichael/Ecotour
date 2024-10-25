@@ -53,7 +53,7 @@
 
     <div class="layer"></div>
     <!-- Mobile menu overlay mask -->
-<!-- 
+<!--
     <div id="preloader">
         <div data-loader="circle-side"></div>
     </div> -->
@@ -92,6 +92,19 @@
                                     Multipurpose Template</a></h1>
                         </div>
                     </div>
+                    <!-- welcome.blade.php -->
+                    <div class="flex items-center justify-center min-h-screen bg-gray-100">
+                        <div class="text-center">
+                            <!-- Button to Login Page or Dashboard -->
+                            <a
+                                href="{{ Auth::check() ? route(Auth::user()->role . '.dashboard') : route('login') }}"
+                                class="px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700">
+                                {{ Auth::check() ? 'Go to Dashboard' : 'Log In' }}
+                            </a>
+                        </div>
+                    </div>
+
+
                     <nav class="col-md-9 col-sm-9 col-xs-9">
                         <ul id="tools_top">
                             <li><a href="#" class="search-overlay-menu-btn"><i class="icon-search-6"></i></a>

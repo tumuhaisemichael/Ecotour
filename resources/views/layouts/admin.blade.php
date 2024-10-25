@@ -144,12 +144,16 @@
 
             <!-- Sidebar Message -->
             <div class="sidebar-card d-none d-lg-flex">
-                <img class="sidebar-card-illustration mb-2" src="assets/admin/img/undraw_rocket.svg" alt="...">
-                <p class="text-center mb-2"><strong>SB Admin Pro</strong> is packed with premium features, components,
-                    and more!</p>
-                <a class="btn btn-success btn-sm" href="https://startbootstrap.com/theme/sb-admin-pro">Upgrade to
-                    Pro!</a>
+                <img class="sidebar-card-illustration mb-2" src="assets/admin/img/undraw_logout.svg" alt="Logout Illustration">
+                <p class="text-center mb-2"><strong>Logout</strong> from your account safely.</p>
+
+                <!-- Logout Form -->
+                <form action="{{ route('logout') }}" method="POST" class="text-center">
+                    @csrf
+                    <button type="submit" class="btn btn-danger btn-sm">Log Out</button>
+                </form>
             </div>
+
 
         </ul>
         <!-- End of Sidebar -->
@@ -165,24 +169,24 @@
     </a>
 
     <!-- Logout Modal-->
-    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
-                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">×</span>
-                    </button>
-                </div>
-                <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
-                <div class="modal-footer">
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" href="login.html">Logout</a>
-                </div>
-            </div>
-        </div>
-    </div>
+{{--    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"--}}
+{{--        aria-hidden="true">--}}
+{{--        <div class="modal-dialog" role="document">--}}
+{{--            <div class="modal-content">--}}
+{{--                <div class="modal-header">--}}
+{{--                    <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>--}}
+{{--                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">--}}
+{{--                        <span aria-hidden="true">×</span>--}}
+{{--                    </button>--}}
+{{--                </div>--}}
+{{--                <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>--}}
+{{--                <div class="modal-footer">--}}
+{{--                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>--}}
+{{--                    <a class="btn btn-primary" href="login.html">Logout</a>--}}
+{{--                </div>--}}
+{{--            </div>--}}
+{{--        </div>--}}
+{{--    </div>--}}
 
     <!-- Bootstrap core JavaScript-->
     <script src="{{ asset('assets/admin/vendor/jquery/jquery.min.js') }}"></script>

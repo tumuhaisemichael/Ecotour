@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Auth\AuthenticatedSessionController;
 use Illuminate\Support\Facades\Route;
 use App\Livewire\Admin\Dashboard;
 use App\Livewire\Admin\Users;
@@ -30,7 +31,7 @@ Route::get('/about', About::class)->name('tourist.about');
 Route::get('/faq', About::class)->name('tourist.faq');
 
 
-Route::middleware(['auth', 'verified'])->prefix('admin')->group(function () {
+Route::middleware(['auth','role:admin'])->prefix('admin')->group(function () {
     Route::get('/dashboard', Dashboard::class)->name('admin.dashboard');
     Route::get('/users', Users::class)->name('admin.users');
     Route::get('/experiences', Experiences::class)->name('admin.experiences');
@@ -46,7 +47,7 @@ Route::middleware(['auth', 'verified'])->prefix('admin')->group(function () {
 });
 
 
-Route::middleware(['auth', 'verified'])->prefix('host')->group(function () {
+Route::middleware(['auth', 'role:host'])->prefix('host')->group(function () {
     Route::get('/dashboard', HostDashboard::class)->name('host.dashboard');
     Route::get('/experiences', HostExperiences::class)->name('host.experiences');
     Route::get('/add-experience', AddExperience::class)->name('host.add-experience');
@@ -59,12 +60,16 @@ Route::middleware(['auth', 'verified'])->prefix('host')->group(function () {
 });
 
 
-Route::middleware(['auth', 'verified'])->prefix('tourist')->group(function () {
+Route::middleware(['auth', 'role:tourist'])->prefix('tourist')->group(function () {
     Route::get('/dashboard', TouristDashboard::class)->name('tourist.dashboard');
     Route::get('/bookings', TouristBookings::class)->name('tourist.bookings');
     Route::get('/booking-details/{id}', BookingDetails::class)->name('tourist.booking-details');
     Route::get('/write-review/{id}', WriteReview::class)->name('tourist.write-review');
 });
+
+Route::post('logout', [AuthenticatedSessionController::class, 'logout'])
+    ->middleware('auth')
+    ->name('logout');
 
 Route::view('profile', 'profile')
     ->middleware(['auth'])
