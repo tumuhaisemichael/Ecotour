@@ -5,13 +5,13 @@ namespace App\Livewire\Tourist;
 use Livewire\Attributes\Layout;
 use Livewire\Component;
 
-class About extends Component
+class Contact extends Component
 {
 
     // layout
     #[Layout('layouts.tourist')]
     public function render()
     {
-        return view('livewire.tourist.about');
+        return view('livewire.tourist.contact');
     }
 }

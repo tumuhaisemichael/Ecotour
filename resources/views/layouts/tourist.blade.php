@@ -111,7 +111,7 @@
                                 <li><a href="{{ route('tourist.browse-experiences') }}">Home</a></li>
                                 <li><a href="{{ route('tourist.about') }}">About Us</a></li>
                                 <li><a href="{{ route('tourist.faq') }}">FAQ</a></li>
-                                <li><a href="">Contact Us</a></li>
+                                <li><a href="{{ route('tourist.contact') }}">Contact Us</a></li>
                                 <li>
                                     <!-- Button to Login Page or Dashboard -->
                                     <a href="{{ Auth::check() ? route(Auth::user()->role . '.dashboard') : route('login') }}"
@@ -225,17 +225,17 @@
     <!-- SPECIFIC SCRIPTS -->
     <script src="{{ asset('assets/tourist/js/video_header.js') }}"></script>
     <script>
-        'use strict';
-        HeaderVideo.init({
-            container: $('.header-video'),
-            header: $('.header-video--media'),
-            videoTrigger: $("#video-trigger"),
-            autoPlayVideo: true
-        });
+    'use strict';
+    HeaderVideo.init({
+        container: $('.header-video'),
+        header: $('.header-video--media'),
+        videoTrigger: $("#video-trigger"),
+        autoPlayVideo: true
+    });
     </script>
 
     <script>
-        document.getElementById('currentYear').textContent = new Date().getFullYear();
+    document.getElementById('currentYear').textContent = new Date().getFullYear();
     </script>
 
     @livewireScripts

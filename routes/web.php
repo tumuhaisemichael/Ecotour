@@ -12,6 +12,7 @@ use App\Livewire\Admin\Reports;
 use App\Livewire\Admin\Settings;
 use App\Livewire\Admin\ReportedExperiences;
 use App\Livewire\Admin\Notifications;
+use App\Livewire\Tourist\Faq;
 use App\Livewire\Host\Dashboard as HostDashboard;
 use App\Livewire\Host\Experiences as HostExperiences;
 use App\Livewire\Host\AddExperience;
@@ -25,13 +26,14 @@ use App\Livewire\Tourist\Bookings as TouristBookings;
 use App\Livewire\Tourist\BookingDetails;
 use App\Livewire\Tourist\WriteReview;
 use App\Livewire\Tourist\About;
+use App\Livewire\Tourist\Contact;
 
 Route::get('/', BrowseExperiences::class)->name('tourist.browse-experiences');
 Route::get('/about', About::class)->name('tourist.about');
-Route::get('/faq', About::class)->name('tourist.faq');
+Route::get('/faq', Faq::class)->name('tourist.faq');
+Route::get('/contact', Contact::class)->name('tourist.contact');
 
-
-Route::middleware(['auth','role:admin'])->prefix('admin')->group(function () {
+Route::middleware(['auth', 'role:admin'])->prefix('admin')->group(function () {
     Route::get('/dashboard', Dashboard::class)->name('admin.dashboard');
     Route::get('/users', Users::class)->name('admin.users');
     Route::get('/experiences', Experiences::class)->name('admin.experiences');
@@ -42,8 +44,6 @@ Route::middleware(['auth','role:admin'])->prefix('admin')->group(function () {
     Route::get('/settings', Settings::class)->name('admin.settings');
     Route::get('/reported-experiences', ReportedExperiences::class)->name('admin.reported-experiences');
     Route::get('/notifications', Notifications::class)->name('admin.notifications');
-    // Route::get('/about', About::class)->name('tourist.about');
-
 });
 
 
@@ -55,8 +55,6 @@ Route::middleware(['auth', 'role:host'])->prefix('host')->group(function () {
     Route::get('/availability', Availability::class)->name('host.availability');
     Route::get('/earnings', Earnings::class)->name('host.earnings');
     Route::get('/reviews', HostReviews::class)->name('host.reviews');
-    // Route::get('/contact', Contact::class)->name('host.count');
-
 });
 
 
