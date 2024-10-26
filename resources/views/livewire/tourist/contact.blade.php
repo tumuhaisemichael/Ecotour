@@ -1,11 +1,11 @@
 <div>
     <!-- SubHeader =============================================== -->
-    <section class="parallax_window_in" data-parallax="scroll" data-image-src="img/sub_header_contact.jpg"
-        data-natural-width="1400" data-natural-height="470">
+    <section class="parallax_window_in" data-parallax="scroll"
+        data-image-src="{{ asset('assets/tourist/img/pack.jpg') }}" data-natural-width="1400" data-natural-height="470">
         <div id="sub_content_in">
             <div id="animate_intro">
-                <h1>Contact Bestours</h1>
-                <p>"Usu habeo equidem sanctus no ex melius labitur conceptam eos"</p>
+                <h1>Contact EcoTour Uganda</h1>
+                <p>"Connecting travelers with the heart of Uganda's natural beauty and communities"</p>
             </div>
         </div>
     </section>
@@ -15,46 +15,44 @@
     <section class="wrapper add_bottom_30">
         <div class="divider_border"></div>
         <div class="container">
-            <div id="map_contact" class="version_2"></div>
-            <!-- end map-->
+
             <div class="row">
 
                 <aside class="col-md-3">
                     <div class="box_style_2">
-                        <h4 class="nomargin_top">Contacts info</h4>
+                        <h4 class="nomargin_top">Contact Information</h4>
                         <p>
-                            11 Fifth Ave - New York, US
-                            <br> + 61 (2) 8093 3400
+                            123 Safari Rd, Kampala, Uganda
+                            <br> +256 (0) 123 456 789
                             <br>
-                            <a href="#">info@domain.com</a>
+                            <a href="mailto:info@ecotouruganda.com">info@ecotouruganda.com</a>
                         </p>
-                        <h5>Get directions</h5>
+                        <h5>Get Directions</h5>
                         <form action="http://maps.google.com/maps" method="get" target="_blank">
                             <div class="form-group">
                                 <input type="text" name="saddr" placeholder="Enter your location"
                                     class="form-control styled">
-                                <input type="hidden" name="daddr" value="New York, NY 11430">
+                                <input type="hidden" name="daddr" value="Kampala, Uganda">
                                 <!-- Write here your end point -->
                             </div>
-                            <input type="submit" value="Get directions" class="btn_1 add_bottom_15">
+                            <input type="submit" value="Get Directions" class="btn_1 add_bottom_15">
                         </form>
                         <hr class="styled">
-                        <h4>Departmens</h4>
+                        <h4>Departments</h4>
                         <ul class="contacts_info">
-                            <li>Administration
+                            <li>Customer Service
                                 <br>
-                                <a href="tel://003823932342">0038 23932342</a>
-                                <br><a href="tel://003823932342">admin@lovefit.com</a>
+                                <a href="tel:+2560123456789">+256 123 456 789</a>
+                                <br><a href="mailto:support@ecotouruganda.com">support@ecotouruganda.com</a>
                                 <br>
-                                <small>Monday to Friday 9am - 7pm</small>
+                                <small>Monday to Friday, 9am - 6pm</small>
                             </li>
-                            <li>General questions
+                            <li>General Inquiries
                                 <br>
-                                <a href="tel://003823932342">0038 23932342</a>
-                                <br><a href="tel://003823932342">questions@lovefit.com</a>
+                                <a href="tel:+2560123456789">+256 123 456 789</a>
+                                <br><a href="mailto:info@ecotouruganda.com">info@ecotouruganda.com</a>
                                 <br>
-                                <p><small>Monday to Friday 9am - 7pm</small>
-                                </p>
+                                <p><small>Monday to Friday, 9am - 6pm</small></p>
                             </li>
                         </ul>
                     </div>
@@ -62,9 +60,10 @@
                 <!--End aside -->
 
                 <div class="col-md-9">
-                    <h3>Contact us</h3>
+                    <h3>Contact Us</h3>
                     <p>
-                        Mussum ipsum cacilds, vidis litro abertis.
+                        Whether you have questions, feedback, or would like to learn more about our tours, feel free to
+                        reach out. We're here to help make your travel experience in Uganda unforgettable!
                     </p>
                     <div>
                         <div id="message-contact"></div>
@@ -72,14 +71,14 @@
                             <div class="row">
                                 <div class="col-md-6 col-sm-6">
                                     <div class="form-group">
-                                        <label>First name</label>
+                                        <label>First Name</label>
                                         <input type="text" class="form-control styled" id="name_contact"
-                                            name="name_contact" placeholder="Jhon">
+                                            name="name_contact" placeholder="Jane">
                                     </div>
                                 </div>
                                 <div class="col-md-6 col-sm-6">
                                     <div class="form-group">
-                                        <label>Last name</label>
+                                        <label>Last Name</label>
                                         <input type="text" class="form-control styled" id="lastname_contact"
                                             name="lastname_contact" placeholder="Doe">
                                     </div>
@@ -90,42 +89,38 @@
                                     <div class="form-group">
                                         <label>Email:</label>
                                         <input type="email" id="email_contact" name="email_contact"
-                                            class="form-control styled" placeholder="jhon@email.com">
+                                            class="form-control styled" placeholder="jane.doe@example.com">
                                     </div>
                                 </div>
                                 <div class="col-md-6 col-sm-6">
                                     <div class="form-group">
-                                        <label>Phone number:</label>
+                                        <label>Phone Number:</label>
                                         <input type="text" id="phone_contact" name="phone_contact"
-                                            class="form-control styled" placeholder="00 44 5435435">
+                                            class="form-control styled" placeholder="+256 123 456 789">
                                     </div>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <label>Your message:</label>
+                                        <label>Your Message:</label>
                                         <textarea rows="5" id="message_contact" name="message_contact"
                                             class="form-control styled" style="height:100px;"
-                                            placeholder="Hello world!"></textarea>
+                                            placeholder="Hello EcoTour Uganda!"></textarea>
                                     </div>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-md-6">
-                                    <div class="form-group">
-                                        <label>Are you human? 3 + 1 =</label>
-                                        <input type="text" id="verify_contact" class=" form-control styled"
-                                            placeholder=" 3 + 1 =">
-                                    </div>
+
                                     <p>
                                         <input type="submit" value="Submit" class="btn_1" id="submit-contact">
                                     </p>
                                 </div>
                             </div>
                         </form>
-      
-              </div>
+
+                    </div>
                 </div>
                 <!-- End col lg 9 -->
             </div>

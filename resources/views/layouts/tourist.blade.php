@@ -31,6 +31,8 @@
     <link href="{{ asset('assets/tourist/css/responsive.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/tourist/css/menu.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/tourist/css/icon_fonts/css/all_icons.min.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 
     <!-- YOUR CUSTOM CSS -->
     <link href="{{ asset('assets/tourist/css/custom.css') }}" rel="stylesheet">
