@@ -9,7 +9,7 @@ class Experience extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['title', 'description', 'price', 'category', 'location', 'host_id', 'available_dates', 'status'];
+    protected $fillable = ['title', 'image', 'description', 'price', 'category', 'location', 'host_id', 'available_dates', 'status'];
 
     public function host()
     {
