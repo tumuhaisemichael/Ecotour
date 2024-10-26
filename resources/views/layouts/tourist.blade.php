@@ -86,10 +86,9 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-3 col-sm-3 col-xs-3">
-                        <div id="logo_home">
-                            <h1><a href="{{ route('tourist.browse-experiences') }}" title="EcoTour Uganda">EcoTour
-                                    Uganda - Community-Driven
-                                    Experiences</a></h1>
+                        <div id="">
+                            <h1 class="m-0 text-primary" style="font-size: 1.5rem;">EcoTour Uganda</h1>
+                            <i class="fas fa-globe ms-2" style="font-size: 1.5rem;"></i>
                         </div>
                     </div>
 
@@ -110,7 +109,6 @@
                             <a href="#" class="open_close" id="close_in"><i class="icon_set_1_icon-77"></i></a>
                             <ul>
                                 <li><a href="{{ route('tourist.browse-experiences') }}">Home</a></li>
-                                <li><a href="{{ route('tourist.browse-experiences') }}">Tours</a></li>
                                 <li><a href="{{ route('tourist.about') }}">About Us</a></li>
                                 <li><a href="{{ route('tourist.faq') }}">FAQ</a></li>
                                 <li><a href="">Contact Us</a></li>
