@@ -9,7 +9,21 @@ class Experience extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['title', 'image', 'description', 'price', 'category', 'location', 'photo','host_id', 'available_dates', 'status'];
+    protected $fillable = [
+        'title',
+        'image',
+        'description',
+        'price',
+        'category',
+        'location',
+        'photo',
+        'host_id',
+        'available_dates',
+        'status'];
+
+    protected $casts = [
+        'available_dates' => 'array'
+    ];
 
     public function host()
     {

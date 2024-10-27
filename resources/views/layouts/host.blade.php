@@ -14,9 +14,13 @@
     <link
         href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
         rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+
+    <!-- Optional: Add a theme if you want -->
+    <link rel="stylesheet" type="text/css" href="https://npmcdn.com/flatpickr/dist/themes/airbnb.css">
 
     <!-- Custom styles for this template-->
-    <link href="{{ asset('assets/admin/css/host.css') }}" rel="stylesheet">
+    <link href="{{ asset('assets/dashboard.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/admin/css/sb-admin-2.min.css') }}" rel="stylesheet">
     @livewireStyles
 </head>
@@ -43,14 +47,6 @@
                 <a class="nav-link" href="{{ route('host.dashboard') }}">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span>
-                </a>
-            </li>
-
-            <!-- Add Experience -->
-            <li class="nav-item">
-                <a class="nav-link" href="{{ route('host.add-experience') }}">
-                    <i class="fas fa-fw fa-plus-circle"></i>
-                    <span>Add Experience</span>
                 </a>
             </li>
 
@@ -167,6 +163,7 @@
 
     <!-- Custom scripts for all pages-->
     <script src="{{ asset('assets/admin/js/sb-admin-2.min.js') }}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 
     @livewireScripts
     @stack('scripts')

@@ -1,5 +1,5 @@
 <div>
-    <div class="users">
+    <div class="start">
         <button class="btn btn-primary my-3" wire:click="addUser">Add User</button>
 
         <table class="table table-bordered">
