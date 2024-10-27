@@ -25,92 +25,52 @@
                 <p>Experience the beauty of Uganda while supporting sustainable tourism and local communities.</p>
             </div>
             <div class="row">
-                <div class="col-md-4 col-sm-6 wow fadeIn animated" data-wow-delay="0.2s">
-                    <div class="img_wrapper">
-                        <div class="ribbon">
-                            <span>Community Favorite</span>
-                        </div>
-                        <div class="price_grid">
-                            <sup>$</sup>45
-                        </div>
-                        <div class="img_container">
-                            <a href="detail-page.html">
-                                <img src="{{ asset('assets/ecotour/img/tour_kampala.jpg') }}" width="800" height="533"
-                                    class="img-responsive" alt="Kampala Culture Tour">
-                                <div class="short_info">
-                                    <h3>Kampala Cultural Walk</h3>
-                                    <em>Duration 3 hours</em>
-                                    <p>
-                                        Explore the vibrant culture, traditional markets, and historical sites of
-                                        Kampala.
-                                    </p>
-                                    <div class="score_wp">Excellent
-                                        <div class="score">8.9</div>
-                                    </div>
+                @forelse($experiences as $experience)
+                    <div class="col-md-4 col-sm-6 wow fadeIn animated" data-wow-delay="0.2s">
+                        <div class="img_wrapper">
+                            @if($loop->first)
+                                <div class="ribbon">
+                                    <span>Community Favorite</span>
                                 </div>
-                            </a>
+                            @endif
+                            <div class="price_grid">
+                                <sup>$</sup>{{ number_format($experience->price, 0) }}
+                            </div>
+                            <div class="img_container">
+                                <a href="{{ route('admin.experiences', $experience) }}">
+                                    @if($experience->photo)
+                                        <img src="{{ Storage::url($experience->photo) }}" 
+                                             width="800" 
+                                             height="533"
+                                             class="img-responsive" 
+                                             alt="{{ $experience->title }}">
+                                    @else
+                                        <img src="{{ asset('assets/ecotour/img/tour_default.jpg') }}"
+                                             width="800" 
+                                             height="533"
+                                             class="img-responsive" 
+                                             alt="Default Tour Image">
+                                    @endif
+                                    <div class="short_info">
+                                        <h3>{{ $experience->title }}</h3>
+                                        <em>{{ ucfirst($experience->category) }}</em>
+                                        <p>
+                                            {{ Str::limit($experience->description, 100) }}
+                                        </p>
+                                        {{-- You might want to add a rating system later --}}
+                                        <div class="score_wp">Excellent
+                                            <div class="score">8.9</div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </div>
                         </div>
                     </div>
-                    <!-- End img_wrapper -->
-                </div>
-
-                <!-- Additional Tours -->
-                <div class="col-md-4 col-sm-6 wow fadeIn animated" data-wow-delay="0.3s">
-                    <div class="img_wrapper">
-                        <div class="ribbon">
-                            <span>Nature Lovers</span>
-                        </div>
-                        <div class="price_grid">
-                            <sup>$</sup>60
-                        </div>
-                        <div class="img_container">
-                            <a href="detail-page.html">
-                                <img src="{{ asset('assets/ecotour/img/tour_jinja.jpg') }}" width="800" height="533"
-                                    class="img-responsive" alt="Jinja Rafting Adventure">
-                                <div class="short_info">
-                                    <h3>Nile River Rafting</h3>
-                                    <em>Duration 4 hours</em>
-                                    <p>
-                                        Enjoy an eco-friendly rafting adventure on the legendary Nile River.
-                                    </p>
-                                    <div class="score_wp">Amazing
-                                        <div class="score">9.3</div>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
+                @empty
+                    <div class="col-12 text-center">
+                        <p>No experiences available at the moment.</p>
                     </div>
-                    <!-- End img_wrapper -->
-                </div>
-
-                <div class="col-md-4 col-sm-6 wow fadeIn animated" data-wow-delay="0.4s">
-                    <div class="img_wrapper">
-                        <div class="ribbon">
-                            <span>Wildlife Adventure</span>
-                        </div>
-                        <div class="price_grid">
-                            <sup>$</sup>80
-                        </div>
-                        <div class="img_container">
-                            <a href="detail-page.html">
-                                <img src="{{ asset('assets/ecotour/img/tour_murchison.jpg') }}" width="800" height="533"
-                                    class="img-responsive" alt="Murchison Safari">
-                                <div class="short_info">
-                                    <h3>Murchison Falls Safari</h3>
-                                    <em>Duration Full Day</em>
-                                    <p>
-                                        Discover Uganda's wildlife with a sustainable safari experience in Murchison
-                                        Falls.
-                                    </p>
-                                    <div class="score_wp">Spectacular
-                                        <div class="score">9.0</div>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                    <!-- End img_wrapper -->
-                </div>
+                @endforelse
             </div>
             <!-- End row -->
 
