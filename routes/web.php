@@ -16,8 +16,6 @@ use App\Livewire\Tourist\Faq;
 use App\Livewire\Host\Dashboard as HostDashboard;
 use App\Livewire\Host\Experiences as HostExperiences;
 use App\Livewire\Host\Bookings as HostBookings;
-use App\Livewire\Host\Availability;
-use App\Livewire\Host\Earnings;
 use App\Livewire\Host\Reviews as HostReviews;
 use App\Livewire\Tourist\Dashboard as TouristDashboard;
 use App\Livewire\Tourist\BrowseExperiences;
@@ -50,8 +48,6 @@ Route::middleware(['auth', 'role:host'])->prefix('host')->group(function () {
     Route::get('/dashboard', HostDashboard::class)->name('host.dashboard');
     Route::get('/experiences', HostExperiences::class)->name('host.experiences');
     Route::get('/bookings', HostBookings::class)->name('host.bookings');
-    Route::get('/availability', Availability::class)->name('host.availability');
-    Route::get('/earnings', Earnings::class)->name('host.earnings');
     Route::get('/reviews', HostReviews::class)->name('host.reviews');
 });
 

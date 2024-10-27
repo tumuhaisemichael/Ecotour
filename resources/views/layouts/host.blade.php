@@ -49,28 +49,11 @@
                     <span>Dashboard</span>
                 </a>
             </li>
-
-            <!-- Availability Management -->
-            <li class="nav-item">
-                <a class="nav-link" href="{{ route('host.availability') }}">
-                    <i class="fas fa-fw fa-calendar-alt"></i>
-                    <span>Availability</span>
-                </a>
-            </li>
-
             <!-- Bookings Management -->
             <li class="nav-item">
                 <a class="nav-link" href="{{ route('host.bookings') }}">
                     <i class="fas fa-fw fa-calendar-check"></i>
                     <span>Bookings</span>
-                </a>
-            </li>
-
-            <!-- Earnings -->
-            <li class="nav-item">
-                <a class="nav-link" href="{{ route('host.earnings') }}">
-                    <i class="fas fa-fw fa-dollar-sign"></i>
-                    <span>Earnings</span>
                 </a>
             </li>
 
