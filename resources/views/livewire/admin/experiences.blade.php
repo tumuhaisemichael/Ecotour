@@ -20,6 +20,7 @@
                     <th>Description</th>
                     <th>Price</th>
                     <th>Category</th>
+                    <th>Photo</th>
                     <th>Location</th>
                     <th>Actions</th>
                 </tr>
@@ -31,6 +32,13 @@
                     <td>{{ $experience->description }}</td>
                     <td>${{ $experience->price }}</td>
                     <td>{{ ucfirst($experience->category) }}</td>
+                    <td>
+                        @if($experience->photo)
+                            <img src="{{ Storage::url($experience->photo) }}" alt="{{ $experience->title }}" class="img-thumbnail" style="max-width: 100px;">
+                        @else
+                            No photo
+                        @endif
+                    </td>
                     <td>{{ $experience->location }}</td>
                     <td>
                         <button class="btn btn-sm btn-success" wire:click="edit({{ $experience->id }})">Edit</button>
@@ -43,8 +51,8 @@
 
         <!-- Bootstrap Modal for Create/Edit -->
         @if($modalMode)
-        <div class="modal fade show d-block" tabindex="-1" style="background-color: rgba(0,0,0,.5);">
-            <div class="modal-dialog">
+        <div class="modal fade show d-block" tabindex="-1" style="background-color: rgba(0,0,0,.5);  overflow-y: auto;">
+            <div class="modal-dialog modal-dialog-scrollable" style="margin: 1.75rem auto;">
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title">{{ $experience_id ? 'Edit Experience' : 'Create Experience' }}</h5>
@@ -79,6 +87,36 @@
                                 <option value="workshop">Workshop</option>
                             </select>
                             @error('category') <span class="text-danger">{{ $message }}</span> @enderror
+                        </div>
+                        <div class="form-group mb-3">
+                            <label for="photo">Photo</label>
+                            <div class="input-group">
+                                <input type="file" id="photo" wire:model="photo" class="form-control" accept="image/*">
+                                @if($photo || $existingPhoto)
+                                    <button class="btn btn-outline-secondary" type="button" wire:click="$set('photo', null)">
+                                        Clear
+                                    </button>
+                                @endif
+                            </div>
+                            <div wire:loading wire:target="photo" class="text-primary mt-2">
+                                Uploading...
+                            </div>
+                            @error('photo') <span class="text-danger">{{ $message }}</span> @enderror
+                            
+                            <!-- Photo preview -->
+                            @if ($photo && !$errors->has('photo'))
+                                <div class="mt-2">
+                                    <img src="{{ $photo->temporaryUrl() }}" 
+                                         class="img-thumbnail" 
+                                         style="max-width: 200px; height: auto; object-fit: cover;">
+                                </div>
+                            @elseif ($experience_id && $existingPhoto)
+                                <div class="mt-2">
+                                    <img src="{{ Storage::url($existingPhoto) }}" 
+                                         class="img-thumbnail" 
+                                         style="max-width: 200px; height: auto; object-fit: cover;">
+                                </div>
+                            @endif
                         </div>
 
                         <div class="form-group mb-3">
