@@ -67,20 +67,28 @@
                     </p>
                     <div>
                         <div id="message-contact"></div>
-                        <form method="post" action="assets/contact.php" id="contactform">
+                        @if (session()->has('success'))
+                        <div class="alert alert-success">
+                            {{ session('success') }}
+                        </div>
+                        @endif
+
+                        <form wire:submit.prevent="submitForm">
                             <div class="row">
                                 <div class="col-md-6 col-sm-6">
                                     <div class="form-group">
                                         <label>First Name</label>
-                                        <input type="text" class="form-control styled" id="name_contact"
-                                            name="name_contact" placeholder="Jane">
+                                        <input type="text" wire:model="first_name" class="form-control styled"
+                                            placeholder="Jane">
+                                        @error('first_name') <span class="text-danger">{{ $message }}</span> @enderror
                                     </div>
                                 </div>
                                 <div class="col-md-6 col-sm-6">
                                     <div class="form-group">
                                         <label>Last Name</label>
-                                        <input type="text" class="form-control styled" id="lastname_contact"
-                                            name="lastname_contact" placeholder="Doe">
+                                        <input type="text" wire:model="last_name" class="form-control styled"
+                                            placeholder="Doe">
+                                        @error('last_name') <span class="text-danger">{{ $message }}</span> @enderror
                                     </div>
                                 </div>
                             </div>
@@ -88,34 +96,29 @@
                                 <div class="col-md-6 col-sm-6">
                                     <div class="form-group">
                                         <label>Email:</label>
-                                        <input type="email" id="email_contact" name="email_contact"
-                                            class="form-control styled" placeholder="jane.doe@example.com">
+                                        <input type="email" wire:model="email" class="form-control styled"
+                                            placeholder="jane.doe@example.com">
+                                        @error('email') <span class="text-danger">{{ $message }}</span> @enderror
                                     </div>
                                 </div>
                                 <div class="col-md-6 col-sm-6">
                                     <div class="form-group">
                                         <label>Phone Number:</label>
-                                        <input type="text" id="phone_contact" name="phone_contact"
-                                            class="form-control styled" placeholder="+256 123 456 789">
+                                        <input type="text" wire:model="phone" class="form-control styled"
+                                            placeholder="+256 123 456 789">
+                                        @error('phone') <span class="text-danger">{{ $message }}</span> @enderror
                                     </div>
                                 </div>
                             </div>
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <div class="form-group">
-                                        <label>Your Message:</label>
-                                        <textarea rows="5" id="message_contact" name="message_contact"
-                                            class="form-control styled" style="height:100px;"
-                                            placeholder="Hello EcoTour Uganda!"></textarea>
-                                    </div>
-                                </div>
+                            <div class="form-group">
+                                <label>Your Message:</label>
+                                <textarea rows="5" wire:model="message" class="form-control styled"
+                                    style="height:100px;" placeholder="Hello EcoTour Uganda!"></textarea>
+                                @error('message') <span class="text-danger">{{ $message }}</span> @enderror
                             </div>
                             <div class="row">
                                 <div class="col-md-6">
-
-                                    <p>
-                                        <input type="submit" value="Submit" class="btn_1" id="submit-contact">
-                                    </p>
+                                    <input type="submit" value="Submit" class="btn_1">
                                 </div>
                             </div>
                         </form>
