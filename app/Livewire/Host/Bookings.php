@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Host;
 
+use Livewire\Attributes\Layout;
 use App\Models\Booking;
 use App\Models\Experience;
 use App\Models\User;
