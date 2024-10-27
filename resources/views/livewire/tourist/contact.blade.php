@@ -23,7 +23,7 @@
                         <h4 class="nomargin_top">Contact Information</h4>
                         <p>
                             123 Safari Rd, Kampala, Uganda
-                            <br> +256 (0) 123 456 789
+                            <br> +256 (0) 123 456 789a
                             <br>
                             <a href="mailto:info@ecotouruganda.com">info@ecotouruganda.com</a>
                         </p>
