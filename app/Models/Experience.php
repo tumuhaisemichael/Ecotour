@@ -19,7 +19,8 @@ class Experience extends Model
         'photo',
         'host_id',
         'available_dates',
-        'status'];
+        'status'
+    ];
 
     protected $casts = [
         'available_dates' => 'array'
@@ -38,5 +39,9 @@ class Experience extends Model
     public function reviews()
     {
         return $this->hasMany(Review::class);
+    }
+    public function reportedExperiences()
+    {
+        return $this->hasMany(ReportedExperience::class, 'experience_id');
     }
 }
