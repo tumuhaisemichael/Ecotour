@@ -152,7 +152,7 @@ class Experiences extends Component
     // Fetch experiences and render them
     public function render()
     {
-        $experiences = Experience::where('host_id', Auth::id())->get();
+        $experiences = Experience::all();
 
         return view('livewire.admin.experiences', compact('experiences'));
     }
