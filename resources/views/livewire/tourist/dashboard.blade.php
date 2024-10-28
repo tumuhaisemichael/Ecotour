@@ -41,35 +41,52 @@
             <p>Your personalized EcoTour dashboard with your latest bookings, recommended experiences, and more!</p>
         </div>
 
-        <!-- Profile Summary & Account Info -->
-        <div class="row card-section">
-            <div class="col-md-4 profile-section">
-                <div class="card">
-                    <div class="card-body text-center">
-                        <i class="fas fa-user-circle fa-2x text-gray-600"></i>
-                        <h2>Welcome Back, {{ Auth::user()->name }}!</h2>
-
-                        <p class="text-muted">Member since: {{ Auth::user()->created_at->format('M Y') }}</p>
-                        <a href="{{ route('profile') }}" class="btn btn-outline-primary btn-sm">View Profile</a>
+        <div class="container mt-5">
+            <div class="row">
+                <!-- Profile Section -->
+                <div class="col-md-4 profile-section">
+                    <div class="card shadow-sm">
+                        <div class="card-body text-center">
+                            <i class="fas fa-user-circle fa-3x text-primary mb-3"></i>
+                            <h4 class="mb-1">Welcome Back, {{ Auth::user()->name }}!</h4>
+                            <p class="text-muted">Member since: {{ Auth::user()->created_at->format('M Y') }}</p>
+                            <a href="{{ route('profile') }}" class="btn btn-outline-primary btn-sm mb-2">View
+                                Profile</a>
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <!-- Account Info -->
-            <div class="col-md-8">
-                <div class="card">
-                    <div class="card-body">
-                        <div class="card-header">
-                            <i class="fas fa-wallet card-icon"></i>
-                            <h5>Your EcoTour Balance</h5>
+                <!-- Account Info Section -->
+                <div class="col-md-4 account-section">
+                    <div class="card shadow-sm">
+                        <div class="card-body text-center">
+                            <i class="fas fa-wallet fa-2x text-success mb-2"></i>
+                            <h5 class="card-title">Your EcoTour Balance</h5>
+                            <p><strong>Current Balance:</strong> $120.00</p>
+                            <p><strong>Total Spent:</strong> $520.00</p>
+                            <button class="btn btn-success btn-sm">Top Up Balance</button>
                         </div>
-                        <p><strong>Current Balance:</strong> $120.00</p>
-                        <p><strong>Total Spent:</strong> $520.00</p>
-                        <button class="btn btn-success btn-sm">Top Up Balance</button>
+                    </div>
+                </div>
+
+                <!-- Logout Section -->
+                <div class="col-md-4 logout-section">
+                    <div class="card shadow-sm">
+                        <div class="card-body text-center">
+                            <i class="fas fa-sign-out-alt fa-2x text-danger mb-2"></i>
+                            <h5 class="card-title">Logout</h5>
+                            <p class="text-muted">Ready to leave? Click below to log out of your account.</p>
+                            <form action="{{ route('logout') }}" method="POST" class="d-inline">
+                                @csrf
+                                <button type="submit" class="btn btn-danger btn-sm">Log Out</button>
+                            </form>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
+
+
 
         <!-- Upcoming Bookings -->
         <div class="row card-section">
@@ -122,7 +139,8 @@
                                     @endforelse
                                 </tbody>
                             </table>
-                            <a href="#" class="btn btn-primary btn-sm mt-3">View All Bookings</a>
+                            <a href="{{ route('tourist.bookings') }}" class="btn btn-primary btn-sm mt-3">View All
+                                Bookings</a>
                         </div>
                     </div>
                 </div>
