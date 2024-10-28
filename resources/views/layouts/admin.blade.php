@@ -15,6 +15,47 @@
         href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
         rel="stylesheet">
 
+        <style>
+            
+            #wrapper {
+                display: flex;
+                min-height: 100vh;
+            }
+
+            #accordionSidebar {
+                position: fixed;
+                height: 100vh;
+                overflow-y: auto;
+                width: 225px; /* Match your existing sidebar width */
+                z-index: 1000;
+            }
+
+            #content-wrapper {
+                margin-left: 225px; /* Match your sidebar width */
+                width: calc(100% - 225px);
+                min-height: 100vh;
+            }
+
+            /* For smaller screens */
+            @media (max-width: 768px) {
+                #accordionSidebar {
+                    position: relative;
+                    height: auto;
+                    width: 100%;
+                }
+
+                #content-wrapper {
+                    margin-left: 0;
+                    width: 100%;
+                }
+            }
+
+            /* Ensure the scroll to top button doesn't get hidden */
+            .scroll-to-top {
+                z-index: 1001;
+            }
+        </style>
+
     <!-- Custom styles for this template-->
     <link href="{{ asset('assets/dashboard.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/admin/css/sb-admin-2.min.css') }}" rel="stylesheet">
