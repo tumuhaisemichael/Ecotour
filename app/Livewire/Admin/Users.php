@@ -5,18 +5,45 @@ namespace App\Livewire\Admin;
 use App\Models\User;
 use Livewire\Attributes\Layout;
 use Livewire\Component;
+
 #[Layout('layouts.admin')]
 class Users extends Component
 {
     public $users;
     public $selectedUser = null;
     public $action = '';
+    public $searchTerm = '';
 
     protected $listeners = ['refreshUsers' => '$refresh'];
 
     public function mount()
     {
-        $this->users = User::all();
+        $this->loadUsers();
+    }
+
+    public function loadUsers()
+    {
+        $query = User::query();
+        
+        if (!empty($this->searchTerm)) {
+            $query->where(function($q) {
+                $q->where('name', 'like', '%' . $this->searchTerm . '%')
+                  ->orWhere('email', 'like', '%' . $this->searchTerm . '%')
+                  ->orWhere('role', 'like', '%' . $this->searchTerm . '%');
+            });
+        }
+
+        $this->users = $query->get();
+    }
+
+    public function search()
+    {
+        $this->loadUsers();
+    }
+
+    public function updatedSearchTerm()
+    {
+        $this->loadUsers();
     }
 
     public function addUser()
@@ -35,7 +62,6 @@ class Users extends Component
 
     public function render()
     {
-        $this->users = User::all();
         return view('livewire.admin.users');
     }
 }
