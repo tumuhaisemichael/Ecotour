@@ -24,7 +24,7 @@
                         <td>{{ $review->experience->title }}</td>
                         <td>{{ $review->rating }}</td>
                         <td>{{ $review->comment }}</td>
-                        <td>{{ $review->user->name }}</td>
+                        <td>{{ $review->tourist->name }}</td>
                         <td>{{ $review->created_at->format('Y-m-d') }}</td>
                     </tr>
                     @endforeach
