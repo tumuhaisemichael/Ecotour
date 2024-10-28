@@ -27,6 +27,10 @@ class BookingDetails extends Component
 
     public function submitBooking()
     {
+        if (!Auth::check()) {
+            // Redirect to login page, passing intended URL to redirect back after login
+            return redirect()->route('login', ['redirect' => route('tourist.booking-details', $this->experienceId)]);
+        }
         $this->validate([
             'bookingDate' => 'required|date',
             'scheduledDate' => 'required|date|after_or_equal:bookingDate',

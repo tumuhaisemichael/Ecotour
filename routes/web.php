@@ -29,6 +29,7 @@ Route::get('/', BrowseExperiences::class)->name('tourist.browse-experiences');
 Route::get('/about', About::class)->name('tourist.about');
 Route::get('/faq', Faq::class)->name('tourist.faq');
 Route::get('/contact', Contact::class)->name('tourist.contact');
+Route::get('/booking-details/{id}', BookingDetails::class)->name('tourist.booking-details');
 
 Route::middleware(['auth', 'role:admin'])->prefix('admin')->group(function () {
     Route::get('/dashboard', Dashboard::class)->name('admin.dashboard');
@@ -55,7 +56,6 @@ Route::middleware(['auth', 'role:host'])->prefix('host')->group(function () {
 Route::middleware(['auth', 'role:tourist'])->prefix('tourist')->group(function () {
     Route::get('/dashboard', TouristDashboard::class)->name('tourist.dashboard');
     Route::get('/bookings', TouristBookings::class)->name('tourist.bookings');
-    Route::get('/booking-details/{id}', BookingDetails::class)->name('tourist.booking-details');
     Route::get('/write-review/{experience}', WriteReview::class)->name('tourist.write-review');
 });
 

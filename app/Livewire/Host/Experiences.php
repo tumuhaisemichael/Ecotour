@@ -4,6 +4,7 @@ namespace App\Livewire\Host;
 
 use Illuminate\Support\Facades\Auth;
 use App\Models\Experience;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Storage;
 use Livewire\Attributes\Layout;
@@ -85,6 +86,9 @@ class Experiences extends Component
         $this->validate();
 
         try {
+
+            DB::beginTransaction();
+
             $data = [
                 'title' => $this->title,
                 'description' => $this->description,
@@ -101,10 +105,15 @@ class Experiences extends Component
 
             Experience::create($data);
 
+            DB::commit();
+
             session()->flash('message', 'Experience created successfully.');
             $this->resetForm();
             $this->modalMode = false;
         } catch (\Exception $e) {
+
+            DB::rollBack();
+
             Log::error('Failed to create experience:', [
                 'error' => $e->getMessage(),
                 'data' => $data ?? null
