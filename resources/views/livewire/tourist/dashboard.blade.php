@@ -1,7 +1,7 @@
 <div>
     <style>
     .dashboard-header {
-        margin-top: 120px;
+        margin-top: 20px;
     }
 
     .dashboard-header h2 {
@@ -32,6 +32,9 @@
     </style>
 
     <div class="container">
+        <div style="height: 20vh;">
+            <!-- spacer -->
+        </div>
         <!-- Dashboard Header -->
         <div class="dashboard-header text-center">
             <h2>Welcome Back, {{ Auth::user()->name }}!</h2>
@@ -70,12 +73,18 @@
 
         <!-- Upcoming Bookings -->
         <div class="row card-section">
+            @if (session()->has('message'))
+            <div class="alert alert-success">
+                {{ session('message') }}
+            </div>
+            @endif
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-body">
                         <h5><i class="fas fa-calendar-check"></i> Upcoming Bookings</h5>
                         <div class="table-responsive">
-                            <table class="table table-bordered table-striped mt-3">
+
+                            <table class="table table-bordered table-striped">
                                 <thead class="thead-light">
                                     <tr>
                                         <th>Experience</th>
@@ -87,29 +96,30 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <!-- Dummy Booking Data -->
+                                    @forelse($bookings as $booking)
                                     <tr>
-                                        <td>Nature Safari</td>
-                                        <td>Dec 15, 2023</td>
-                                        <td>Queen Elizabeth National Park</td>
-                                        <td>$150.00</td>
-                                        <td><span class="badge badge-success">Confirmed</span></td>
+                                        <td>{{ $booking->experience->title }}</td>
+                                        <td>{{ $booking->scheduled_date->format('M d, Y') }}</td>
+                                        <td>{{ $booking->experience->location }}</td>
+                                        <td>${{ number_format($booking->total_amount, 2) }}</td>
                                         <td>
-                                            <a href="#" class="btn btn-info btn-sm">Details</a>
-                                            <a href="#" class="btn btn-secondary btn-sm">Review</a>
+                                            <span
+                                                class="badge badge-{{ $booking->payment_status == 'Confirmed' ? 'success' : 'warning' }}">
+                                                {{ $booking->payment_status }}
+                                            </span>
+                                        </td>
+                                        <td>
+                                            <a href="{{ route('tourist.booking-details', $booking->experience->id) }}"
+                                                class="btn btn-info btn-sm">Details</a>
+                                            <a href="{{ route('tourist.write-review', $booking->experience->id) }}"
+                                                class="btn btn-secondary btn-sm">Review</a>
                                         </td>
                                     </tr>
+                                    @empty
                                     <tr>
-                                        <td>Mountain Hike</td>
-                                        <td>Jan 10, 2024</td>
-                                        <td>Mount Elgon</td>
-                                        <td>$200.00</td>
-                                        <td><span class="badge badge-warning">Pending</span></td>
-                                        <td>
-                                            <a href="#" class="btn btn-info btn-sm">Details</a>
-                                            <a href="#" class="btn btn-secondary btn-sm">Review</a>
-                                        </td>
+                                        <td colspan="6" class="text-center">You have no bookings yet.</td>
                                     </tr>
+                                    @endforelse
                                 </tbody>
                             </table>
                             <a href="#" class="btn btn-primary btn-sm mt-3">View All Bookings</a>
@@ -129,7 +139,7 @@
                             <!-- Dummy Experience Cards -->
                             <div class="col-md-4">
                                 <div class="card mb-4">
-                                    <img class="card-img-top" src="https://via.placeholder.com/150"
+                                    <img class="card-img-top" src="{{ asset('assets/tourist/img/pack.jpg') }}"
                                         alt="Experience Image">
                                     <div class="card-body">
                                         <h5 class="card-title">Sunset Cruise</h5>
@@ -140,7 +150,7 @@
                             </div>
                             <div class="col-md-4">
                                 <div class="card mb-4">
-                                    <img class="card-img-top" src="https://via.placeholder.com/150"
+                                    <img class="card-img-top" src="{{ asset('assets/tourist/img/pack.jpg') }}"
                                         alt="Experience Image">
                                     <div class="card-body">
                                         <h5 class="card-title">Bird Watching Tour</h5>
@@ -151,7 +161,7 @@
                             </div>
                             <div class="col-md-4">
                                 <div class="card mb-4">
-                                    <img class="card-img-top" src="https://via.placeholder.com/150"
+                                    <img class="card-img-top" src="{{ asset('assets/tourist/img/pack.jpg') }}"
                                         alt="Experience Image">
                                     <div class="card-body">
                                         <h5 class="card-title">Cultural Experience</h5>
@@ -171,17 +181,19 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-body text-center">
-                        <h5><i class="fas fa-leaf"></i> EcoTour Membership Perks</h5>
+                        <h5><i class="fas fa-leaf"></i> EcoTour Perks</h5>
                         <ul class="list-unstyled">
-                            <li><i class="fas fa-check-circle"></i> Exclusive Discounts</li>
-                            <li><i class="fas fa-check-circle"></i> Personalized Recommendations</li>
-                            <li><i class="fas fa-check-circle"></i> Early Access to New Experiences</li>
+                            <li><i class="fas fa-check-circle"></i> Discounts</li>
+                            <li><i class="fas fa-check-circle"></i> Tailored Picks</li>
+                            <li><i class="fas fa-check-circle"></i> Early Access</li>
                         </ul>
-                        <button class="btn btn-outline-success btn-sm">Upgrade Your Membership</button>
+                        <button class="btn btn-outline-success btn-sm">Upgrade Now</button>
                     </div>
                 </div>
+
 
             </div>
         </div>
     </div>
+
 </div>

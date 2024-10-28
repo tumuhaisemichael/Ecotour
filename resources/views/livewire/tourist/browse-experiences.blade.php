@@ -26,52 +26,47 @@
             </div>
             <div class="row">
                 @forelse($experiences as $experience)
-                    <div class="col-md-4 col-sm-6 wow fadeIn animated" data-wow-delay="0.2s">
-                        <div class="img_wrapper">
-                            @if($loop->first)
-                                <div class="ribbon">
-                                    <span>Community Favorite</span>
-                                </div>
-                            @endif
-                            <div class="price_grid">
-                                <sup>$</sup>{{ number_format($experience->price, 0) }}
-                            </div>
-                            <div class="img_container">
-                                <a href="{{ route('admin.experiences', $experience) }}">
-                                    @if($experience->photo)
-                                        <img src="{{ Storage::url($experience->photo) }}" 
-                                             width="800" 
-                                             height="533"
-                                             class="img-responsive" 
-                                             alt="{{ $experience->title }}">
-                                    @else
-                                        <img src="{{ asset('assets/ecotour/img/tour_default.jpg') }}"
-                                             width="800" 
-                                             height="533"
-                                             class="img-responsive" 
-                                             alt="Default Tour Image">
-                                    @endif
-                                    <div class="short_info">
-                                        <h3>{{ $experience->title }}</h3>
-                                        <em>{{ ucfirst($experience->category) }}</em>
-                                        <p>
-                                            {{ Str::limit($experience->description, 100) }}
-                                        </p>
-                                        {{-- You might want to add a rating system later --}}
-                                        <div class="score_wp">Excellent
-                                            <div class="score">8.9</div>
-                                        </div>
+                <div class="col-md-4 col-sm-6 wow fadeIn animated" data-wow-delay="0.2s">
+                    <div class="img_wrapper">
+                        @if($loop->first)
+                        <div class="ribbon">
+                            <span>Community Favorite</span>
+                        </div>
+                        @endif
+                        <div class="price_grid">
+                            <sup>$</sup>{{ number_format($experience->price, 0) }}
+                        </div>
+                        <div class="img_container">
+                            <a href="{{ route('tourist.booking-details', ['id' => $experience->id]) }}">
+                                @if($experience->photo)
+                                <img src="{{ Storage::url($experience->photo) }}" width="800" height="533"
+                                    class="img-responsive" alt="{{ $experience->title }}">
+                                @else
+                                <img src="{{ asset('assets/ecotour/img/tour_default.jpg') }}" width="800" height="533"
+                                    class="img-responsive" alt="Default Tour Image">
+                                @endif
+                                <div class="short_info">
+                                    <h3>{{ $experience->title }}</h3>
+                                    <em>{{ ucfirst($experience->category) }}</em>
+                                    <p>
+                                        {{ Str::limit($experience->description, 100) }}
+                                    </p>
+                                    {{-- You might want to add a rating system later --}}
+                                    <div class="score_wp">Excellent
+                                        <div class="score">8.9</div>
                                     </div>
-                                </a>
-                            </div>
+                                </div>
+                            </a>
                         </div>
                     </div>
+                </div>
                 @empty
-                    <div class="col-12 text-center">
-                        <p>No experiences available at the moment.</p>
-                    </div>
+                <div class="col-12 text-center">
+                    <p>No experiences available at the moment.</p>
+                </div>
                 @endforelse
             </div>
+
             <!-- End row -->
 
             <div class="main_title_2">
@@ -84,21 +79,21 @@
                     <ul>
                         <li>
                             <div>
-                                <a href="detail-page.html">
+                                <a href="#">
                                     <i class="fa fa-paw fa-2x" aria-hidden="true"></i> <!-- Gorilla icon -->
                                     <h4>Gorilla Trekking Experience</h4>
                                     <small>Duration: Full Day</small>
-                                    <span class="price_list">$150</span>
+
                                 </a>
                             </div>
                         </li>
                         <li>
                             <div>
-                                <a href="detail-page.html">
+                                <a href="#">
                                     <i class="fa fa-home fa-2x" aria-hidden="true"></i> <!-- Village icon -->
                                     <h4>Village Life Tour</h4>
                                     <small>Duration: 2 hours</small>
-                                    <span class="price_list">$20</span>
+
                                 </a>
                             </div>
                         </li>
@@ -110,21 +105,21 @@
                     <ul>
                         <li>
                             <div>
-                                <a href="detail-page.html">
+                                <a href="#">
                                     <i class="fa fa-music fa-2x" aria-hidden="true"></i> <!-- Dance icon -->
                                     <h4>Traditional Dance Evening</h4>
                                     <small>Duration: 1.5 hours</small>
-                                    <span class="price_list">$15</span>
+
                                 </a>
                             </div>
                         </li>
                         <li>
                             <div>
-                                <a href="detail-page.html">
+                                <a href="#">
                                     <i class="fa fa-shopping-basket fa-2x" aria-hidden="true"></i> <!-- Market icon -->
                                     <h4>Local Market Visit</h4>
                                     <small>Duration: 1 hour</small>
-                                    <span class="price_list">$10</span>
+
                                 </a>
                             </div>
                         </li>
