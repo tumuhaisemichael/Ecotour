@@ -9,7 +9,6 @@ use Illuminate\Support\Facades\Auth;
 use Livewire\WithFileUploads;
 use Illuminate\Support\Facades\Storage;  // Added this import
 
-// layout
 #[Layout('layouts.admin')]
 class Experiences extends Component
 {
@@ -19,7 +18,6 @@ class Experiences extends Component
     public $modalMode = false; // to control the modal state
     public $photo;
     public $existingPhoto;
-
 
     // Validation rules
     protected $rules = [
@@ -44,7 +42,6 @@ class Experiences extends Component
         $this->experience_id = '';
         $this->photo = null;
         $this->existingPhoto = null;
-        $this->experience_id = null;
     }
 
     // Open modal to create a new experience
@@ -62,8 +59,6 @@ class Experiences extends Component
         $photoPath = null;
         if ($this->photo) {
             $photoPath = $this->photo->store('experiences', 'public');
-            // $photoPath = str_replace('public/', '', $photoPath);
-
         }
 
         Experience::create([
@@ -93,7 +88,7 @@ class Experiences extends Component
         $this->category = $experience->category;
         $this->location = $experience->location;
         $this->available_dates = $experience->available_dates;
-        $this->existingPhoto = $experience->photo;  // Added this line
+        $this->existingPhoto = $experience->photo;
 
         $this->modalMode = true; // open the modal
     }
@@ -105,28 +100,33 @@ class Experiences extends Component
 
         $experience = Experience::find($this->experience_id);
 
-
-        $photoPath = $experience->photo;
-        if ($this->photo) {
-            // Delete old photo if it exists
-            if ($experience->photo) {
-                Storage::disk('public')->delete($experience->photo);
+        // Check if experience exists before continuing
+        if ($experience) {
+            $photoPath = $experience->photo;
+            if ($this->photo) {
+                // Delete old photo if it exists
+                if ($experience->photo) {
+                    Storage::disk('public')->delete($experience->photo);
+                }
+                // Store new photo
+                $photoPath = $this->photo->store('experiences', 'public');
             }
-            // Store new photo
-            $photoPath = $this->photo->store('experiences', 'public');
+
+            $experience->update([
+                'title' => $this->title,
+                'description' => $this->description,
+                'price' => $this->price,
+                'category' => $this->category,
+                'location' => $this->location,
+                'available_dates' => $this->available_dates,
+                'photo' => $photoPath
+            ]);
+
+            session()->flash('message', 'Experience updated successfully.');
+        } else {
+            session()->flash('error', 'Experience not found.');
         }
-        $experience->update([
-            'title' => $this->title,
-            'description' => $this->description,
-            'price' => $this->price,
-            'category' => $this->category,
-            'location' => $this->location,
-            'available_dates' => $this->available_dates,
-            'photo' => $photoPath  // Added this line
 
-        ]);
-
-        session()->flash('message', 'Experience updated successfully.');
         $this->resetInputFields();
         $this->modalMode = false; // close the modal
     }
@@ -134,11 +134,19 @@ class Experiences extends Component
     // Delete an experience
     public function delete($id)
     {
-        Experience::findOrFail($id)->delete();
-        if ($experience->photo) {
-            Storage::delete('public/' . $experience->photo);  // Added photo deletion
+        $experience = Experience::findOrFail($id);
+
+        if ($experience) {
+            // Delete the photo if it exists
+            if ($experience->photo) {
+                Storage::disk('public')->delete($experience->photo);
+            }
+
+            $experience->delete();
+            session()->flash('message', 'Experience deleted successfully.');
+        } else {
+            session()->flash('error', 'Experience not found.');
         }
-        session()->flash('message', 'Experience deleted successfully.');
     }
 
     // Fetch experiences and render them

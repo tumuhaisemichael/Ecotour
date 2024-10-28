@@ -4,25 +4,32 @@ namespace App\Livewire\Admin;
 
 use Livewire\Attributes\Layout;
 use Livewire\Component;
-use App\Models\Booking;  // Import the Booking model
-use App\Models\User;     // Import the User model
-use App\Models\Experience; // Import the Experience model
-use Livewire\WithPagination; // Use pagination
+use App\Models\Booking;
+use Livewire\WithPagination;
 
 class Bookings extends Component
 {
-    use WithPagination; // Enable pagination
+    use WithPagination;
 
     #[Layout('layouts.admin')]
+
+    // Delete a booking by its ID
+    public function deleteBooking($id)
+    {
+        $booking = Booking::findOrFail($id); // Fetch booking
+        $booking->delete(); // Delete booking
+        session()->flash('message', 'Booking deleted successfully.');
+    }
+
     public function render()
     {
-        // Retrieve bookings with related tourist and experience data
+        // Retrieve paginated bookings with tourist and experience data
         $bookings = Booking::with(['tourist', 'experience'])
-            ->latest() // Order by latest bookings
-            ->paginate(10); // Paginate results
+            ->latest()
+            ->paginate(10);
 
         return view('livewire.admin.bookings', [
-            'bookings' => $bookings, // Pass bookings data to the view
+            'bookings' => $bookings,
         ]);
     }
 }

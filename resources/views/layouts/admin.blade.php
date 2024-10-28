@@ -73,6 +73,14 @@
                 </a>
             </li>
 
+            <!-- Notifications -->
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('admin.notifications') }}">
+                    <i class="fas fa-fw fa-bell"></i>
+                    <span>Notifications</span>
+                </a>
+            </li>
+
             <!-- Reported Experiences -->
             <li class="nav-item">
                 <a class="nav-link" href="{{ route('admin.reported-experiences') }}">
@@ -94,14 +102,6 @@
                 <a class="nav-link" href="{{ route('admin.reports') }}">
                     <i class="fas fa-fw fa-chart-bar"></i>
                     <span>Reports</span>
-                </a>
-            </li>
-
-            <!-- Notifications -->
-            <li class="nav-item">
-                <a class="nav-link" href="{{ route('admin.notifications') }}">
-                    <i class="fas fa-fw fa-bell"></i>
-                    <span>Notifications</span>
                 </a>
             </li>
 
