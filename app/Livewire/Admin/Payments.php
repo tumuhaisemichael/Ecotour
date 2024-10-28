@@ -13,7 +13,9 @@ class Payments extends Component
     public function render()
     {
         
-        $payments = Payment::with('booking')->get(); 
+        $payments = Payment::with('booking')
+        ->orderBy('created_at', 'desc') // Order by latest
+        ->get(); 
 
         
         return view('livewire.admin.payments', compact('payments'));

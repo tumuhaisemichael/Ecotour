@@ -56,18 +56,6 @@
                                 <input type="text" readonly wire:model="totalAmount" class="form-control">
                             </div>
 
-                            <div class="mb-3">
-                                <label for="paymentMethod" class="form-label">Payment Method</label>
-                                <select wire:model="paymentMethod" id="paymentMethod"
-                                        class="form-control @error('paymentMethod') is-invalid @enderror">
-                                    <option value="">Select Payment Method</option>
-                                    <option value="paypal">PayPal</option>
-                                    <option value="mobile_money">Mobile Money</option>
-                                    <option value="credit_card">Credit Card</option>
-                                </select>
-                                @error('paymentMethod') <span class="invalid-feedback">{{ $message }}</span> @enderror
-                            </div>
-
                             <button type="submit" class="btn btn-primary btn-block">Confirm Booking</button>
                         </form>
                     </div>

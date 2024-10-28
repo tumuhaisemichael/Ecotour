@@ -1,4 +1,4 @@
-<?php
+<?php 
 
 namespace App\Livewire\Tourist;
 
@@ -8,6 +8,7 @@ use App\Models\Booking;
 use App\Models\Payment;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Str;
 
 class Bookings extends Component
 {
@@ -16,6 +17,7 @@ class Bookings extends Component
     public $experience_id;
     public $scheduled_date;
     public $total_amount;
+    public $selectedBookingId;
 
     protected $rules = [
         'paymentMethod' => 'required|in:paypal,mobile_money,credit_card',
@@ -26,7 +28,11 @@ class Bookings extends Component
 
     public function mount()
     {
-        // Eager load the experience details with bookings
+        $this->loadBookings();
+    }
+
+    public function loadBookings()
+    {
         $this->bookings = Booking::with('experience')
             ->where('tourist_id', Auth::id())
             ->get();
@@ -50,17 +56,55 @@ class Bookings extends Component
                 'booking_id' => $booking->id,
                 'payment_method' => $this->paymentMethod,
                 'amount' => $this->total_amount,
-                'status' => 'pending',  
-                'transaction_reference' => null,
+                'status' => 'pending',
+                'transaction_reference' => 'MOCK_TRANSACTION_' . strtoupper(Str::random(10)),
             ]);
         });
 
-        // Refresh bookings after a new one is created
-        $this->bookings = Booking::with('experience')
-            ->where('tourist_id', Auth::id())
-            ->get();
+        $this->loadBookings();
 
         session()->flash('message', 'Booking and payment method saved successfully.');
+    }
+
+    public function openPaymentModal($bookingId)
+    {
+        $this->selectedBookingId = $bookingId;
+        $this->dispatch('showPaymentModal');
+    }
+
+    public function initiatePayment()
+    {
+        if (!$this->paymentMethod) {
+            session()->flash('error', 'Please select a payment method.');
+            return;
+        }
+
+        $booking = Booking::findOrFail($this->selectedBookingId);
+
+        DB::transaction(function () use ($booking) {
+            $booking->update(['payment_status' => 'paid']);
+
+            $payment = Payment::firstOrCreate(
+                ['booking_id' => $booking->id],
+                [
+                    'payment_method' => $this->paymentMethod,
+                    'amount' => $booking->total_amount,
+                    'status' => 'pending',
+                    'transaction_reference' => 'MOCK_TRANSACTION_' . strtoupper(Str::random(10)),
+                ]
+            );
+
+            $payment->update([
+                'status' => 'completed',
+                'transaction_reference' => 'MOCK_TRANSACTION_' . strtoupper(Str::random(10)),
+            ]);
+        });
+
+        $this->dispatch('hidePaymentModal');
+        session()->flash('message', 'Payment completed successfully.');
+        $this->loadBookings();
+
+        
     }
 
     #[Layout('layouts.tourist')]
