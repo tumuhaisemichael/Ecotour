@@ -8,7 +8,8 @@ use App\Models\Experience;
 use App\Models\User;
 use Livewire\Component;
 use Livewire\WithPagination;
-
+// layout
+#[Layout('layouts.host')]
 class Bookings extends Component
 {
     use WithPagination;
@@ -53,7 +54,7 @@ class Bookings extends Component
             'bookings' => $bookings,
             'tourists' => $tourists,
             'experiences' => $experiences,
-        ])->layout('layouts.host');
+        ]);
     }
 
     public function createBooking()

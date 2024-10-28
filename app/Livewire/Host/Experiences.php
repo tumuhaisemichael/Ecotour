@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Host;
 
+use Illuminate\Support\Facades\Auth;
 use App\Models\Experience;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Storage;
@@ -51,7 +52,7 @@ class Experiences extends Component
     public function render()
     {
         return view('livewire.host.experiences', [
-            'experiences' => Experience::where('host_id', auth()->id())
+            'experiences' => Experience::where('host_id', Auth::id())
                 ->latest()
                 ->get()
         ]);
@@ -91,7 +92,7 @@ class Experiences extends Component
                 'category' => $this->category,
                 'location' => $this->location,
                 'available_dates' => $this->formatDatesForStorage($this->available_dates_raw),
-                'host_id' => auth()->id(),
+                'host_id' => Auth::id(),
             ];
 
             if ($this->photo) {
@@ -114,7 +115,7 @@ class Experiences extends Component
 
     public function edit($id)
     {
-        $experience = Experience::where('host_id', auth()->id())
+        $experience = Experience::where('host_id', Auth::id())
             ->findOrFail($id);
 
         $this->experience_id = $experience->id;
@@ -141,7 +142,7 @@ class Experiences extends Component
         $this->validate();
 
         try {
-            $experience = Experience::where('host_id', auth()->id())
+            $experience = Experience::where('host_id', Auth::id())
                 ->findOrFail($this->experience_id);
 
 
@@ -179,7 +180,7 @@ class Experiences extends Component
     public function delete($id)
     {
         try {
-            $experience = Experience::where('host_id', auth()->id())
+            $experience = Experience::where('host_id', Auth::id())
                 ->findOrFail($id);
 
             if ($experience->image) {
@@ -216,7 +217,7 @@ class Experiences extends Component
         }
 
         // Format dates and filter out invalid ones
-        $formattedDates = array_filter(array_map(function($date) {
+        $formattedDates = array_filter(array_map(function ($date) {
             try {
                 return date('Y-m-d', strtotime(trim($date)));
             } catch (\Exception $e) {
