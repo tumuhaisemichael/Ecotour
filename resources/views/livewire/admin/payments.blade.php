@@ -4,13 +4,13 @@
         <table class="table table-striped table-hover table-bordered shadow-sm">
             <thead class="bg-primary text-white">
                 <tr>
-                    <th scope="col">ID</th>
-                    <th scope="col">Booking ID</th>
-                    <th scope="col">Payment Method</th>
-                    <th scope="col">Amount</th>
-                    <th scope="col">Status</th>
-                    <th scope="col">Transaction Reference</th>
-                    <th scope="col">Created At</th>
+                    <th>ID</th>
+                    <th>Booking ID</th>
+                    <th>Payment Method</th>
+                    <th>Amount</th>
+                    <th>Status</th>
+                    <th>Transaction Reference</th>
+                    <th>Created At</th>
                 </tr>
             </thead>
             <tbody>
