@@ -33,5 +33,8 @@
                 {{ $slot }}
             </main>
         </div>
+
+        <script src="https://cdn.botpress.cloud/webchat/v2.2/inject.js"></script>
+<script src="https://files.bpcontent.cloud/2024/10/28/04/20241028044539-89UMPRMF.js"></script>
     </body>
 </html>
