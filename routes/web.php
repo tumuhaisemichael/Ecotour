@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
+use App\Livewire\Tourist\BookingInfo;
 use Illuminate\Support\Facades\Route;
 use App\Livewire\Admin\Dashboard;
 use App\Livewire\Admin\Users;
@@ -30,6 +31,7 @@ Route::get('/about', About::class)->name('tourist.about');
 Route::get('/faq', Faq::class)->name('tourist.faq');
 Route::get('/contact', Contact::class)->name('tourist.contact');
 Route::get('/booking-details/{id}', BookingDetails::class)->name('tourist.booking-details');
+Route::get('/booking-info/{id}', BookingInfo::class)->name('tourist.booking-info');
 
 Route::middleware(['auth', 'role:admin'])->prefix('admin')->group(function () {
     Route::get('/dashboard', Dashboard::class)->name('admin.dashboard');

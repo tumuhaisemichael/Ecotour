@@ -1,34 +1,34 @@
 <div>
     <style>
-    .dashboard-header {
-        margin-top: 20px;
-    }
+        .dashboard-header {
+            margin-top: 20px;
+        }
 
-    .dashboard-header h2 {
-        font-size: 2rem;
-    }
+        .dashboard-header h2 {
+            font-size: 2rem;
+        }
 
-    .card-section {
-        margin-top: 20px;
-    }
+        .card-section {
+            margin-top: 20px;
+        }
 
-    .card-icon {
-        font-size: 2.5rem;
-        color: #28a745;
-    }
+        .card-icon {
+            font-size: 2.5rem;
+            color: #28a745;
+        }
 
-    .card-header {
-        display: flex;
-        align-items: center;
-    }
+        .card-header {
+            display: flex;
+            align-items: center;
+        }
 
-    .card-header h5 {
-        margin-left: 10px;
-    }
+        .card-header h5 {
+            margin-left: 10px;
+        }
 
-    .profile-section img {
-        border-radius: 50%;
-    }
+        .profile-section img {
+            border-radius: 50%;
+        }
     </style>
 
     <div class="container">
@@ -56,15 +56,14 @@
                     </div>
                 </div>
 
-                <!-- Account Info Section -->
+                <!-- Account Info Section with Blockchain Wallet -->
                 <div class="col-md-4 account-section">
                     <div class="card shadow-sm">
                         <div class="card-body text-center">
                             <i class="fas fa-wallet fa-2x text-success mb-2"></i>
-                            <h5 class="card-title">Your EcoTour Balance</h5>
-                            <p><strong>Current Balance:</strong> $120.00</p>
-                            <p><strong>Total Spent:</strong> $520.00</p>
-                            <button class="btn btn-success btn-sm">Top Up Balance</button>
+                            <h5 class="card-title">Your EcoTour Blockchain Wallet</h5>
+                            <p><strong>Current Balance:</strong> ${{ number_format($balance, 2) }}</p>
+                            <button wire:click="addCoins" class="btn btn-success btn-sm">Add 1000 Coins</button>
                         </div>
                     </div>
                 </div>
@@ -126,7 +125,7 @@
                                             </span>
                                         </td>
                                         <td>
-                                            <a href="{{ route('tourist.booking-details', $booking->experience->id) }}"
+                                            <a href="{{ route('tourist.booking-info', $booking->experience->id) }}"
                                                 class="btn btn-info btn-sm">Details</a>
                                             <a href="{{ route('tourist.write-review', $booking->experience->id) }}"
                                                 class="btn btn-secondary btn-sm">Review</a>
